@@ -1,7 +1,3 @@
-//Create a div to establish one square
-//append 15 more squares to first div 
-//apply a hover effect to each square
-//create a reset button
 createInitialGrid();
 const resetButton = document.createElement("button") 
 resetButton.textContent = "Reset";
@@ -24,17 +20,11 @@ const container = document.querySelector("#container")
 container.parentNode.insertBefore(resetButton, container);
 
 
-
-let num = 1;
-
-
 function resetGrid(size) {
     
     container.textContent = '';
     createInitialGrid(size);
-    // Implement grid reset logic
-    // 1. Clear existing grid
-    // 2. Create new grid with 'size' squares per side
+    
   }
 
   function createInitialGrid(size = 4) {
@@ -57,3 +47,11 @@ function resetGrid(size) {
     }
 }
 
+//Create a div to establish one square
+//append 15 more squares to first div 
+    //--method since changed to createInitialGrid function
+//apply a hover effect to each square
+//create a reset button
+// Implement grid reset logic
+    // 1. Clear existing grid
+    // 2. Create new grid with 'size' squares per side
