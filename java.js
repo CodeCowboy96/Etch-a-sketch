@@ -2,6 +2,7 @@
 //append 15 more squares to first div 
 //apply a hover effect to each square
 //create a reset button
+createInitialGrid();
 const resetButton = document.createElement("button") 
 resetButton.textContent = "Reset";
 resetButton.addEventListener("click", () => {
@@ -22,45 +23,37 @@ resetButton.addEventListener("click", () => {
 const container = document.querySelector("#container")
 container.parentNode.insertBefore(resetButton, container);
 
+
+
 let num = 1;
-
-for (let i=0; i<16; i++) {
-    let parentDiv = document.createElement("div");
-        parentDiv.setAttribute('class', 'firstDivs');
-        parentDiv.addEventListener("mouseover", () => {
-    
-            parentDiv.style.backgroundColor = "blue";
-          });
-        
-        container.appendChild(parentDiv);
-}
-
-
-
 
 
 function resetGrid(size) {
-    const existingDivs = document.querySelectorAll('.firstDivs');
-    existingDivs.forEach(div => div.remove());
-    // calculate number of squares
-    const totalCells = size * size;
-
-    for (let i=0; i<totalCells; i++) {
-        let parentDiv = document.createElement("div");
-            parentDiv.setAttribute('class', 'firstDivs');
-            parentDiv.addEventListener("mouseover", () => {
-        
-                parentDiv.style.backgroundColor = "blue";
-              });
-            
-            container.appendChild(parentDiv);
-    }
+    
+    container.textContent = '';
+    createInitialGrid(size);
     // Implement grid reset logic
     // 1. Clear existing grid
     // 2. Create new grid with 'size' squares per side
-    console.log(`Creating a new ${size}x${size} grid`);
   }
 
+  function createInitialGrid(size = 4) {
+    const container = document.querySelector("#container");
+    const totalCells = size * size;
+    const squareSize = `${100 / size}%`;
 
-  
+    for (let i = 0; i < totalCells; i++) {
+        let parentDiv = document.createElement("div");
+        parentDiv.setAttribute('class', 'firstDivs');
+        parentDiv.style.flexBasis = squareSize;
+        parentDiv.style.width = squareSize;
+        parentDiv.style.height = squareSize;
+        
+        parentDiv.addEventListener("mouseover", () => {
+            parentDiv.style.backgroundColor = "red";
+        });
+        
+        container.appendChild(parentDiv);
+    }
+}
 
